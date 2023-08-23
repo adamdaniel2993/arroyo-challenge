@@ -11,13 +11,13 @@ resource "aws_security_group" "arroyo_ec2_sg" {
   }
 
   #dejare esta regla comentada hasta la revision del challenge, esta regla permite conexiones ssh a las instancias del cluster, el cidr_block 0.0.0.0 es un ejemplo
-#    ingress {
-#    from_port       = 22
-#    to_port         = 22
-#    protocol        = "tcp"
-#    cidr_blocks = ["0.0.0.0/0"]
-#
-#  }
+  #    ingress {
+  #    from_port       = 22
+  #    to_port         = 22
+  #    protocol        = "tcp"
+  #    cidr_blocks = ["0.0.0.0/0"]
+  #
+  #  }
 
   egress {
     from_port   = 0
@@ -38,10 +38,10 @@ resource "aws_security_group" "arroyo_db_sg" {
   vpc_id = module.arroyo_vpc.vpc_id
 
   ingress {
-    from_port       = 0
-    to_port         = 0
-    protocol        = "tcp"
-    security_groups = ["0.0.0.0/0"] #ec2
+    from_port   = 0
+    to_port     = 0
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"] 
 
   }
 
